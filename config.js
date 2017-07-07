@@ -10,7 +10,8 @@ module.exports = (logger) => {
       password: 'apppwd'
     },
 
-    api: {
+
+    server: {
       port: 8001,
     },
 
@@ -18,6 +19,5 @@ module.exports = (logger) => {
       connectionString: 'amqp://ldcfpqsj:_zoKJjBqqOqVBOwJWx32rxv-FjNNjPeP@penguin.rmq.cloudamqp.com/ldcfpqsj',
       queue: 'receiver'
     }
-
   });
 };

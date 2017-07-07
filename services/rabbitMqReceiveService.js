@@ -1,13 +1,13 @@
 'use strict';
 
-const queue = config.amqp.queue
-const amqp = require('amqplib/callback_api');
+const queue = config.amqp.queue;
+const amqp = require('amqplib');
 let channel;
 
 module.exports = () => {
   return {
     connect() {
-      amqp.connect(config.amqp.connectionString)
+      return amqp.connect(config.amqp.connectionString)
         .then(conn => {
           return conn.createChannel();
         })
@@ -17,7 +17,7 @@ module.exports = () => {
     },
 
     consume(onMessage) {
-      channel.consume(QUEUE_NAME, onMessage);
+      channel.consume(queue, onMessage);
     }
   };
-}
+};

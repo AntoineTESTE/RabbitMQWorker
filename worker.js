@@ -1,22 +1,18 @@
 'use strict';
 
-const { rMqService } = require('./services')();
-const { MessageModel } = require('./models')();
-
-
-rMqService.connect()
-  .then(() => {
-    return rMqService.consume(msg => {
-      MessageModel.save(msg)
-        .then(createdMessage => {
-          console.log(`well done, saved ${createdMessage} in database, so cool!`);
-        });
+module.exports = (services, models) => {
+  services.rMqService.connect()
+    .then(() => {
+      return services.rMqService.consume(msg => {
+        models.MessageModel.save(msg)
+          .then(createdMessage => {
+            console.log(`well done, saved ${createdMessage} in database, so cool!`);
+          });
+      });
+    })
+    .catch(err => {
+      // do not start in an unstable state
+      console.error(err);
     });
-  })
-  .catch(err => {
-    // do not start in an unstable state
-    console.error(err);
-  })
-
-
+};
 

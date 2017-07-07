@@ -1,7 +1,7 @@
 'use strict';
 
 
-const massive = require('massive')(config);
+const massive = require('massive');
 let db;
 
 massive(config.postgres).then(_db => {
@@ -14,5 +14,5 @@ module.exports = () => {
     save(msg) {
       return db.save(msg);
     }
-  }
-}
+  };
+};
