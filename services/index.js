@@ -2,6 +2,6 @@
 
 module.exports = () => {
   return {
-    rMqService: require('./rabbitMqReceiveService')()
+    rMqService: require('./rabbitMqReceiveService')(),
   }
 };

@@ -16,6 +16,7 @@
     "hapi-swagger": "^7.7.0",
     "http": "^0.0.0",
     "inert": "^4.2.0",
+    "massive": "^3.0.0",
     "nodemon": "^1.11.0",
     "twilio": "^3.4.0",
     "vision": "^4.1.1",

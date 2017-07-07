@@ -12,7 +12,7 @@ const server = new Hapi.Server();
 
 server.connection({
   host: 'localhost',
-  port: 8001
+  port: config.api.port
 });
 
 const options = {

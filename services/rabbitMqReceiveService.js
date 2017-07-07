@@ -1,29 +1,23 @@
 'use strict';
 
+const queue = config.amqp.queue
+const amqp = require('amqplib/callback_api');
+let channel;
+
 module.exports = () => {
-
   return {
-
-    receiveMessage(routingKey, queue, ch) {
-      const amqp = require('amqplib/callback_api');
-      amqp.connect(routingKey, function (err, conn) {
-        if (err) throw err;
-        consumer(conn);
-
-      });
-
-      // Emission
-      const consumer = (conn) => {
-        conn.createChannel((err, ch) => {
-          if (err) throw err;
-          ch.assertQueue(queue);
-          // ch.prefetch(1); // Dispatch if (1) msg have not receive ack
-          ch.consume(queue, (msg) => {
-            console.log("msg.content.toString():", JSON.parse(msg.content.toString()));
-            ch.ack(msg);
-          });
+    connect() {
+      amqp.connect(config.amqp.connectionString)
+        .then(conn => {
+          return conn.createChannel();
+        })
+        .then(ch => {
+          channel = ch;
         });
-      }
+    },
+
+    consume(onMessage) {
+      channel.consume(QUEUE_NAME, onMessage);
     }
-  }
+  };
 }
