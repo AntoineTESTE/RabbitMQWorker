@@ -6,6 +6,7 @@ let channel;
 
 module.exports = () => {
   return {
+    // connect
     connect() {
       return amqp.connect(config.amqp.connectionString)
         .then(conn => {
@@ -15,9 +16,13 @@ module.exports = () => {
           channel = ch;
         });
     },
-
+    // consume
     consume(onMessage) {
       channel.consume(queue, onMessage);
+    },
+    // acknowlegment
+    ack(msg) {
+      channel.ack(msg);
     }
   };
 };

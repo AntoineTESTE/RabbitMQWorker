@@ -12,13 +12,15 @@
   "dependencies": {
     "amqplib": "^0.5.1",
     "common-env": "^6.1.0",
-    "http": "^0.0.0",
+    "http": "0.0.0",
     "inert": "^4.2.0",
     "massive": "^3.0.0",
     "nodemon": "^1.11.0",
     "twilio": "^3.4.0",
+    "uuid": "^3.1.0",
     "vision": "^4.1.1",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "yarn": "^0.27.5"
   },
   "repository": "https://github.com/livee/RabbitMQWorker.git",
   "devDependencies": {

@@ -4,19 +4,27 @@ require('./bootstrap');
 
 const services = require('./services')();
 const models = require('./models')();
+const uuidv4 = require('uuid/v4');
+
 
 services.rMqService.connect()
   .then(() => {
-    console.log('Server running at:', config.server.port);
+    // connect
+    console.log('Server is running on port :', config.server.port);
     return services.rMqService.consume(msg => {
-      models.MessageModel.save(msg)
+      // parse
+      const content = JSON.parse(msg.content);
+      console.log(content);
+      // save
+      return models.MessageModel.save(content)
         .then(createdMessage => {
-          console.log(`well done, saved ${createdMessage} in database, so cool!`);
-        });
+          console.log(`well done, your content have been saved in database!`);
+          // acknowlegement
+          services.rMqService.ack(msg);
+        })
     });
   })
   .catch(err => {
-    // do not start in an unstable state
     console.error(err);
   });
 
