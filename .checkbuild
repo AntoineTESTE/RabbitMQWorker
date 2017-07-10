@@ -1,0 +1,34 @@
+{
+  "checkbuild": {
+    "enable": ["jsinspect", "plato", "nsp", "david"], // we manually use eslint because checkbuild uses v1 and we want the v3
+    // don't exit immediately if one of the tools reports an error (default true)
+    "continueOnError": true,
+    // don't exit(1) even if we had some failures (default false)
+    "allowFailures": false
+  },
+  "jsxhint": {
+    "args": ["src/**/*.jsx"]
+  },
+  "jsinspect": {
+    "args": ["*.js"],
+    "diff": true
+  },
+  "buddyjs": {
+    "args": ["*.js"],
+    "ignore": [0, 1]
+  },
+  "plato": {
+    "args": ["*.js"],
+    // define your project min average maintainability
+    "maintainability": 65.00
+  },
+  "nsp": {},
+  "david": {
+    "dev": false,
+    // whether to check devDependencies or not (default false)
+    "stable": true,
+    // whether to check dependencies or not (default true)
+    "ignore": []
+      // put ignored dependencies here (both devDependencies and dependencies)
+  }
+}

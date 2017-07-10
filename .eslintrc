@@ -1,56 +1,30 @@
 // Use this file as a starting point for your project's .eslintrc.
 // Copy this file, and add rule overrides as needed.
 {
-    "extends": [
-        "airbnb"
-    ],
-    "rules": {
-        "strict": 0,
-        "arrow-body-style": 0,
-        "camelcase": 0,
-        "consistent-return": 0,
-        "no-undef": 0,
-        "comma-dangle": 0,
-        "global-require": 0,
-        "space-before-function-paren": [
-            2,
-            "never"
-        ],
-        "func-names": 0,
-        "import/newline-after-import": 0,
-        "max-len": [
-            1,
-            120
-        ],
-        "no-shadow": [
-            2,
-            {
-                "allow": [
-                    "err"
-                ]
-            }
-        ],
-        "quotes": [
-            2,
-            "single",
-            {
-                "allowTemplateLiterals": true
-            }
-        ],
-        "arrow-parens": 0,
-        "no-unused-vars": [
-            2,
-            {
-                "args": "none"
-            }
-        ],
-        "vars-on-top": 0,
-        "import/no-dynamic-require": 0,
-        "no-underscore-dangle": 0,
-        "block-scoped-var": 0,
-        "newline-per-chained-call": 0,
-        "import/no-extraneous-dependencies": 0,
-        "no-param-reassign": 1,
-        "lines-around-directive": "off"
-    }
+  "extends": ["airbnb"],
+  "rules": {
+    "strict": 0,
+    "arrow-body-style": 0,
+    "camelcase": 0,
+    "consistent-return": 0,
+    "no-undef": 0,
+    "comma-dangle": 0,
+    "global-require": 0,
+    "space-before-function-paren": [2, "never"],
+    "func-names": 0,
+    "import/newline-after-import": 0,
+    "max-len": [1, 120],
+    "no-shadow": [2, { "allow": ["err"] }],
+    "quotes": [2, "single", { "allowTemplateLiterals": true }],
+    "arrow-parens": 0,
+    "no-unused-vars": [2, { "args": "none" }],
+    "vars-on-top": 0,
+    "import/no-dynamic-require": 0,
+    "no-underscore-dangle": 0,
+    "block-scoped-var": 0,
+    "newline-per-chained-call": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-param-reassign": 1,
+    "lines-around-directive": "off"
+  }
 }

@@ -2,35 +2,36 @@
   "name": "rabbitmq",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "worker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "force-readme": "if [ -s './README.md' ]; then echo ''; else echo 'Error: no README.md found or is empty' && exit 1; fi",
+    "check": "PATH=$(npm bin):$PATH check-build && eslint -c .eslintrc src/**/*.js && npm run force-readme && textlint -c .textlintrc README.md"
   },
   "author": "PRESTATIONLIVEE\\prestation <teste.antoine@free.fr>",
   "license": "ISC",
   "dependencies": {
-    "amqp": "^0.2.6",
     "amqplib": "^0.5.1",
     "common-env": "^6.1.0",
-    "eslint-config-airbnb": "^15.0.2",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.1.0",
-    "express": "^4.15.3",
-    "hapi": "^16.4.3",
-    "hapi-swagger": "^7.7.0",
     "http": "^0.0.0",
     "inert": "^4.2.0",
     "massive": "^3.0.0",
     "nodemon": "^1.11.0",
     "twilio": "^3.4.0",
     "vision": "^4.1.1",
-    "winston": "^2.3.1",
-    "yarn": "^0.24.5"
+    "winston": "^2.3.1"
   },
   "repository": "https://github.com/livee/RabbitMQWorker.git",
   "devDependencies": {
-    "eslint": "^3.19.0",
+    "check-build": "^2.8.2",
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb": "^15.0.2",
     "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "textlint": "^8.2.1",
+    "textlint-rule-no-dead-link": "^3.1.1",
+    "textlint-rule-no-empty-section": "^1.1.0",
+    "textlint-rule-structure": "^1.0.1"
   }
 }
