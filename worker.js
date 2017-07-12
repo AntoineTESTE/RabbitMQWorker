@@ -15,7 +15,7 @@ services.rMqService.connect()
       // parse
       const content = JSON.parse(msg.content);
       // date
-      console.log(content);
+      console.log('Message receive : ', content);
       // save
       return models.MessageModel.save(content)
         .then(createdMessage => {
