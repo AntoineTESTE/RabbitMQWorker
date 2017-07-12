@@ -1,10 +1,10 @@
 'use strict';
 
+const _ = require('lodash');
 require('./bootstrap');
 
 const services = require('./services')();
 const models = require('./models')();
-const uuidv4 = require('uuid/v4');
 
 
 services.rMqService.connect()
@@ -14,14 +14,15 @@ services.rMqService.connect()
     return services.rMqService.consume(msg => {
       // parse
       const content = JSON.parse(msg.content);
+      // date
       console.log(content);
       // save
       return models.MessageModel.save(content)
         .then(createdMessage => {
-          console.log(`well done, your content have been saved in database!`);
+          console.log(`Your content have been saved in database!`);
           // acknowlegement
           services.rMqService.ack(msg);
-        })
+        });
     });
   })
   .catch(err => {

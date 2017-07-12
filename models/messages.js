@@ -1,6 +1,5 @@
 'use strict';
 
-
 const massive = require('massive');
 let db;
 
