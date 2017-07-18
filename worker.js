@@ -1,31 +1,20 @@
 'use strict';
-
-const _ = require('lodash');
 require('./bootstrap');
 
-const services = require('./services')();
-const models = require('./models')();
-
-
-services.rMqService.connect()
-  .then(() => {
-    // connect
-    console.log('Server is running on port :', config.server.port);
-    return services.rMqService.consume(msg => {
-      // parse
+require('./src')().then(({ services, models }) => {
+    return services.RabbitMQ.consume(msg => {
       const content = JSON.parse(msg.content);
-      // date
-      console.log('Message receive : ', content);
-      // save
-      return models.MessageModel.save(content)
+      models.MessageModel.save(content)
         .then(createdMessage => {
-          console.log(`Your content have been saved in database!`);
-          // acknowlegement
-          services.rMqService.ack(msg);
+          console.log(`saved ${JSON.stringify(createdMessage)}`);
+          services.RabbitMQ.ack(msg);
+        })
+        .catch(err => {
+          console.error(`error saving message, message: ${JSON.stringify(msg)}, reason: ${err}`);
         });
     });
   })
   .catch(err => {
     console.error(err);
+    process.exit(1);
   });
-

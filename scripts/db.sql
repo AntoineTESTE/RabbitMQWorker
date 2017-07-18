@@ -6,7 +6,7 @@ create table message (
   type VARCHAR(255),
   provider VARCHAR(255),
   "providerMessageId" VARCHAR(255),
-  "receiveDate" Timestamp
+  "receiveat" Timestamp
 );
 
 

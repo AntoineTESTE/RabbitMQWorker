@@ -4,6 +4,7 @@
   "description": "",
   "main": "worker.js",
   "scripts": {
+    "start": "node worker.js",
     "force-readme": "if [ -s './README.md' ]; then echo ''; else echo 'Error: no README.md found or is empty' && exit 1; fi",
     "check": "./node_modules/.bin/check-build && ./node_modules/.bin/eslint -c .eslintrc src/**/*.js && npm run force-readme && ./node_modules/.bin/textlint -c .textlintrc README.md"
   },
