@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = () => {
-  return require('./rabbitMqReceiveService')().then(RabbitMQService => {
+  return require('./RabbitMQService')().then(RabbitMQService => {
     return { RabbitMQService };
   });
 };
