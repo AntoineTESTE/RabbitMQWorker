@@ -9,9 +9,6 @@ module.exports = (logger) => {
       user: 'postgres',
       password: 'apppwd'
     },
-    server: {
-      port: 8001,
-    },
     amqp: {
       connectionString: 'amqp://ldcfpqsj:_zoKJjBqqOqVBOwJWx32rxv-FjNNjPeP@penguin.rmq.cloudamqp.com/ldcfpqsj',
       queue: 'receiver'
